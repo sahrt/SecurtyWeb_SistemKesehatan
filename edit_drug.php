@@ -11,7 +11,7 @@
     $id_obat = $_GET['id_obat'];
 
     $query = "SELECT * FROM obat WHERE id_obat='$id_obat'";
-    $result = mysqli_query($con, $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     ?>
     <form method="post" action="process_edit_drug.php">

@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Tambah Data Pasien</h1>
+    <a href="index.php">Kembali</a> <br>
     <form method="post" action="process_patient.php">
         <div>
             <label>Nama:</label>

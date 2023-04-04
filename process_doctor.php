@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $telepon = $_POST['telepon'];
 
     $query = "INSERT INTO dokter (nama_dokter, spesialis, telepon) VALUES ('$nama_dokter', '$spesialis', '$telepon')";
-    $result = mysqli_query($con, $query);
+    $result = mysqli_query($conn, $query);
 
     if ($result) {
         header('Location: doctor_data.php');

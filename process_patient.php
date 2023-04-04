@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $alamat = $_POST['alamat'];
 
     $query = "INSERT INTO pasien (nama, umur, jk, alamat) VALUES ('$nama', '$umur', '$jk', '$alamat')";
-    $result = mysqli_query($con, $query);
+    $result = mysqli_query($conn, $query);
 
     if ($result) {
         header('Location: list_patient.php');

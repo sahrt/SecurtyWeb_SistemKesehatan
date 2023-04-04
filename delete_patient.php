@@ -14,7 +14,7 @@ if(isset($_GET['id'])){
 	$id_pasien = $_GET['id'];
 	// Menghapus data pasien dengan id_pasien yang sesuai
 	$query = "DELETE FROM pasien WHERE id_pasien = '$id_pasien'";
-	mysqli_query($con, $query);
+	mysqli_query($conn, $query);
 }
 
 // Redirect ke halaman list_patient.php setelah data pasien berhasil dihapus
@@ -25,5 +25,5 @@ exit();
 
 <?php
 // Menutup con ke database
-mysqli_close($con);
+mysqli_close($conn);
 ?>

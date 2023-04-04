@@ -14,7 +14,7 @@ if(isset($_GET['id'])){
 	$id_pasien = $_GET['id'];
 	// Mengambil data pasien dengan id_pasien yang sesuai
 	$query = "SELECT * FROM pasien WHERE id_pasien = '$id_pasien'";
-	$result = mysqli_query($con, $query);
+	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_assoc($result);
 }else{
 	// Jika tidak ada parameter id_pasien pada URL, redirect ke halaman list_patient.php
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 	// Update data pasien pada tabel pasien
 	$query = "UPDATE pasien SET nama = '$nama', umur = '$umur', jk = '$jk', alamat = '$alamat' WHERE id_pasien = '$id_pasien'";
-	mysqli_query($con, $query);
+	mysqli_query($conn, $query);
 
 	// Redirect ke halaman list_patient.php setelah data pasien berhasil diupdate
 	header("Location: list_patient.php");
@@ -66,5 +66,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 <?php
 // Menutup koneksi ke database
-mysqli_close($con);
+mysqli_close($conn);
 ?>

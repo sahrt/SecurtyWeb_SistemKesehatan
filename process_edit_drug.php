@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $stok_obat = $_POST['stok_obat'];
 
     $query = "UPDATE obat SET nama_obat='$nama_obat', stok_obat='$stok_obat' WHERE id_obat='$id_obat'";
-    $result = mysqli_query($con, $query);
+    $result = mysqli_query($conn, $query);
 
     if ($result) {
         header('Location: drug_data.php');

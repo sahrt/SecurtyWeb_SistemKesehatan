@@ -4,17 +4,20 @@ include 'koneksi.php';
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($con, $query);
+    // menggunakan parameterized query dan escape string untuk mencegah SQL injection
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? AND password = ?");
+    $password1 = mysqli_real_escape_string($conn, $password);
+  
+    $stmt->bind_param('ss', $username, $password1);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (mysqli_num_rows($result) == 0) {
-        // simpan data pengguna ke dalam session
+    if ($result->num_rows == 1) {
         $_SESSION['username'] = $username;
         header('Location: index.php');
     } else {
-        // tampilkan pesan error jika username atau password salah
         $error = "Username atau password salah";
     }
 }
@@ -28,7 +31,7 @@ if (isset($_POST['submit'])) {
 <body>
     <h1>Login Sistem Manajemen Kesehatan</h1>
     <?php if (isset($error)) { ?>
-        <div><?php echo $error; ?></div>
+        <div style="color:  red;"><?php echo $error; ?></div>
     <?php } ?>
     <form method="post" action="">
         <div>

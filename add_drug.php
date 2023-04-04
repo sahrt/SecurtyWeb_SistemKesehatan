@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Tambah Data Obat</h1>
+    <a href="index.php">Kembali</a> <br>
     <form method="post" action="process_drug.php">
         <div>
             <label>Nama Obat:</label>

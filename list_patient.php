@@ -11,7 +11,7 @@ include "koneksi.php";
 
 // Mengambil data pasien dari tabel pasien
 $query = "SELECT * FROM pasien";
-$result = mysqli_query($con, $query);
+$result = mysqli_query($conn, $query);
 
 ?>
 
@@ -22,6 +22,7 @@ $result = mysqli_query($con, $query);
 </head>
 <body>
 	<h1>Daftar Pasien</h1>
+	<a href="index.php">Kembali</a> <br>
 	<a href="add_patient.php">Tambah Pasien</a>
 	<table>
 		<tr>
@@ -44,7 +45,7 @@ $result = mysqli_query($con, $query);
 				<td><?php echo $row['alamat']; ?></td>
 				<td>
 					<a href="edit_patient.php?id=<?php echo $row['id_pasien']; ?>">Edit</a>
-					<a href="delete_patient.php?id=<?php echo $row['id_pasien']; ?>">Hapus</a>
+					<a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="delete_patient.php?id=<?php echo $row['id_pasien']; ?>">Hapus</a>
 				</td>
 			</tr>
 			<?php
@@ -52,11 +53,11 @@ $result = mysqli_query($con, $query);
 		}
 		?>
 	</table>
-	<a href="logout.php">Logout</a>
+	<a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="logout.php">Logout</a>
 </body>
 </html>
 
 <?php
 // Menutup con ke database
-mysqli_close($con);
+mysqli_close($conn);
 ?>

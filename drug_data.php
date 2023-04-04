@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Data Obat</h1>
+       <a href="index.php">Kembali</a> <br>
     <table>
         <tr>
             <th>ID Obat</th>
@@ -15,7 +16,7 @@
         include 'koneksi.php';
 
         $query = "SELECT * FROM obat";
-        $result = mysqli_query($con, $query);
+        $result = mysqli_query($conn, $query);
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
@@ -26,6 +27,6 @@
         }
         ?>
     </table>
-    <a href="logout.php">Logout</a>
+    <a  onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="logout.php">Logout</a>
 </body>
 </html>
